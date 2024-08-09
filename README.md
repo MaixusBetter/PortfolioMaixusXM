@@ -55,7 +55,7 @@ To run My Portfolio locally, follow these steps:
     ```
 
 ## Link to the Deployed Version
-[Video Link](https://drive.google.com/file/d/1OQX2pOQF_I_Wuq3lxse3BaZnFBZ5KdHw/view?usp=sharing)
+[Deployed Portfolio](https://celebrated-sunflower-7e48c7.netlify.app)
 
 ## Credits
 - Author: Xavier Mendoza
