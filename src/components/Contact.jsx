@@ -2,12 +2,9 @@ import { useState } from 'react';
 
 const Contact = () => {
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
   const [errors, setErrors] = useState({});
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
-  };
 
   const validateEmail = (e) => {
     const value = e.target.value;
@@ -19,23 +16,48 @@ const Contact = () => {
     }));
   };
 
+  const generateMailtoLink = () => {
+    return `mailto:xamg2004@gmail.com?subject=Contact Form Submission from ${name}&body=${encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    )}`;
+  };
+
   return (
     <section id="contact" className="container my-5">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <div className="mb-3">
           <label className="form-label">Name:</label>
-          <input type="text" className="form-control" required />
+          <input
+            type="text"
+            className="form-control"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
         </div>
         <div className="mb-3">
           <label className="form-label">Email:</label>
-          <input type="email" className="form-control" value={email} onChange={validateEmail} required />
+          <input
+            type="email"
+            className="form-control"
+            value={email}
+            onChange={validateEmail}
+            required
+          />
           {errors.email && <div className="text-danger">{errors.email}</div>}
         </div>
         <div className="mb-3">
           <label className="form-label">Message:</label>
-          <textarea className="form-control" required></textarea>
+          <textarea
+            className="form-control"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            required
+          ></textarea>
         </div>
-        <button type="submit" className="btn btn-primary">Send</button>
+        <a href={generateMailtoLink()} className="btn btn-primary">
+          Send
+        </a>
       </form>
     </section>
   );
